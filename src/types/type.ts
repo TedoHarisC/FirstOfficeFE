@@ -3,6 +3,7 @@ export interface Office {
     price: number;
     duration: string;
     name: string;
+    address: string;
     slug: string;
     city: City;
     thumbnail: string;
