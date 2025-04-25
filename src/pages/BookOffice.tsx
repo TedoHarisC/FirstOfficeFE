@@ -18,7 +18,7 @@ export default function BookOffice() {
     phone_number: "",
     started_at: "",
     office_space_id: "",
-    totalAmmountWithUniqueCode: 0,
+    total_amount: 0,
   });
 
   const [formErrors, setFormErrors] = useState<z.ZodError[]>([]);
@@ -48,7 +48,7 @@ export default function BookOffice() {
         setFormData((prev) => ({
           ...prev,
           office_space_id: officeSpaceId,
-          totalAmmountWithUniqueCode: grandTotal,
+          total_amount: grandTotal,
         }));
 
         setLoading(false);
@@ -116,7 +116,7 @@ export default function BookOffice() {
       navigate("/success-booking", {
         state: {
           office,
-          booking: response.data,
+          booking: response.data.data,
         },
       });
     } catch (error: unknown) {
@@ -149,7 +149,7 @@ export default function BookOffice() {
         />
       </div>
       <form
-        action="booking-finished.html"
+        onSubmit={handleSubmit}
         className="relative flex justify-center max-w-[1130px] mx-auto gap-[30px] mb-20 z-20"
       >
         <div className="flex flex-col shrink-0 w-[500px] h-fit rounded-[20px] border border-[#E0DEF7] p-[30px] gap-[30px] bg-white">
